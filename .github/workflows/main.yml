@@ -12,8 +12,15 @@ jobs:
           echo "VERSION=$VER" >> $GITHUB_ENV
       - run: |
           source R_PACKAGES
-          echo "PACKAGES=$PACKAGES" >> $GITHUB_ENV 
-      - uses: devcontainers/ci@v0.3
+          echo "PACKAGES=$PACKAGES" >> $GITHUB_ENV
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }} 
+      - name: Build image
+        uses: devcontainers/ci@v0.3
         with: 
           imageName: ghcr.io/prestevez/kingpin-paper
           imageTag: latest,${{ env.VERSION }}
