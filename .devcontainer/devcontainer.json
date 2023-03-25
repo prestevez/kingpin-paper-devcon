@@ -1,0 +1,28 @@
+{
+    "image": "ghcr.io/rocker-org/devcontainer/geospatial:4",
+    "features":{
+        "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "${local.env.PACKAGES}"
+		}
+    },
+    "customizations": {
+        "vscode": {
+          "extensions": [
+                        "streetsidesoftware.code-spell-checker",
+                        "ionutvmi.path-autocomplete",
+                        "ms-vscode-remote.remote-containers",
+                        "ms-vscode-remote.remote-ssh",
+                        "ms-vscode-remote.remote-ssh-edit",
+                        "ms-vscode.remote-explorer",
+                        "quarto.quarto",
+                        "RDebugger.r-debugger",
+                        "REditorSupport.r",
+                        "streetsidesoftware.code-spell-checker"
+                    ]
+        }
+      },
+    "remoteUser": "rstudio",
+    "updateRemoteUserUID": false
+}
+
+

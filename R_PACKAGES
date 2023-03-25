@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# R Packages to install
+PACKAGES="ggthemes,car,Cairo,texreg"
