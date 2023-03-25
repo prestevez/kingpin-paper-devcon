@@ -11,7 +11,8 @@ jobs:
           VER=$VMAJOR.$VMINOR.$VPATCH.${GITHUB_SHA:0:7}
           echo "VERSION=$VER" >> $GITHUB_ENV
       - run: |
-          source R_PACKAGES 
+          source R_PACKAGES
+          echo "PACKAGES=$PACKAGES" >> $GITHUB_ENV 
       - uses: devcontainers/ci@v0.3
         with: 
           imageName: ghcr.io/prestevez/kingpin-paper
