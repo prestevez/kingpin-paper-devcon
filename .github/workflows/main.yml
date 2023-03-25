@@ -22,7 +22,7 @@ jobs:
       - name: Build image
         uses: devcontainers/ci@v0.3
         with: 
-          imageName: ghcr.io/prestevez/kingpin-paper
+          imageName: ghcr.io/prestevez/kingpin-paper-devcon
           imageTag: latest,${{ env.VERSION }}
           skipContainerUserIdUpdate: true
       - run: |
