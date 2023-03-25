@@ -25,6 +25,5 @@ jobs:
           imageName: ghcr.io/prestevez/kingpin-paper
           imageTag: latest,${{ env.VERSION }}
           skipContainerUserIdUpdate: true
-          push: never
       - run: |
           docker image list -a
