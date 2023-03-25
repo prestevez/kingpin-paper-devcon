@@ -10,10 +10,9 @@ jobs:
           source VERSION
           VER=$VMAJOR.$VMINOR.$VPATCH.${GITHUB_SHA:0:7}
           echo "VERSION=$VER" >> $GITHUB_ENV
-      - name: Import package names
-      - run: source R_PACKAGES 
-      - name: Build image
-        uses: devcontainers/ci@v0.3
+      - run: |
+          source R_PACKAGES 
+      - uses: devcontainers/ci@v0.3
         with: 
           imageName: ghcr.io/prestevez/kingpin-paper
           imageTag: latest,${{ env.VERSION }}
