@@ -24,7 +24,6 @@ jobs:
         with: 
           imageName: ghcr.io/prestevez/kingpin-paper-devcon
           imageTag: latest,${{ env.VERSION }}
-          platform: linux/amd64
           skipContainerUserIdUpdate: true
       - run: |
           docker inspect ghcr.io/prestevez/kingpin-paper-devcon
