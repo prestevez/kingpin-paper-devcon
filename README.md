@@ -4,6 +4,6 @@
 - [ ] use variable names to name new image
 - [ ] Version numbering so that it follows rockers?
 - [x] Deliver MVP
-- [ ] Build multi platform images
-- [ ] Push to ghcr.io
+- [ ] Build multi platform images <- Try this next
+- [x] Push to ghcr.io
 - [ ] Test differences between created images and "features image"
