@@ -25,6 +25,3 @@ jobs:
           imageName: ghcr.io/prestevez/kingpin-paper-devcon
           imageTag: latest,${{ env.VERSION }}
           skipContainerUserIdUpdate: true
-      - run: |
-          docker inspect ghcr.io/prestevez/kingpin-paper-devcon
-          docker inspect ${docker images | awk 'NR==2{print $1}'}
