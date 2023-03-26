@@ -30,7 +30,8 @@ jobs:
         with: 
           imageName: ghcr.io/prestevez/kingpin-paper-devcon
           imageTag: latest,${{ env.VERSION }}
-          platform: linux/amd64,linux/arm64
+          platform: linux/amd64
           skipContainerUserIdUpdate: true
       - run: |
-          docker image list -a
+          docker inspect ghcr.io/prestevez/kingpin-paper-devcon
+          docker inspect ${docker images | awk 'NR==2{print $1}'}

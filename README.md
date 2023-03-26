@@ -7,3 +7,4 @@
 - [ ] Build multi platform images <- Try this next
 - [x] Push to ghcr.io
 - [ ] Test differences between created images and "features image"
+- [ ] Use cache
