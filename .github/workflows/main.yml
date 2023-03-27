@@ -10,7 +10,7 @@ jobs:
         uses: docker://quay.io/skopeo/stable
         with:
           entrypoint: bash
-          args: docker run --rm -it quay.io/skopeo/stable inspect --override-arch amd64 docker://rocker/geospatial:latest > tmp.json
+          args: skopeo inspect --override-arch amd64 docker://rocker/geospatial:latest > tmp.json
       - run: |
           echo tmp.json
           echo "json=$(cat tmp.json)" >> $GITHUB_ENV
