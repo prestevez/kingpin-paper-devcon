@@ -9,7 +9,8 @@ jobs:
       - name: Get latest R version of parent image
         uses: docker://quay.io/skopeo/stable
         with:
-          args: inspect docker://rocker/geospatial:latest > tmp.json
+          entrypoint: bash
+          args: docker run --rm -it quay.io/skopeo/stable inspect --override-arch amd64 docker://rocker/geospatial:latest > tmp.json
       - run: |
           echo tmp.json
           echo "json=$(cat tmp.json)" >> $GITHUB_ENV
