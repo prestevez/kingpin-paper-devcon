@@ -6,16 +6,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Inspect parent image
-        id: inspection
-        uses: prestevez/skopeo-inspect@beta.0.3
+      - name: Inspect base image
+        id: inspect-image
+        uses: prestevez/skopeo-inspect@v1
         with: 
-          target-image: rocker/geospatial:latest
-      - name: Test skopeo inspect action
-        run: echo ${{ steps.inspection.outputs.inspection }}
-      - run: | 
-          echo "$(./read-img-json.py $json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
-      - run: |
+          target_image: docker://rocker/geospatial:latest
+      - name: Test skopeo-inspect action
+        run: echo ${{ steps.inspect-image.outputs.inspection }}
+      - name: Parse image inspection
+        run: | 
+          echo ${{ steps.inspect-image.outputs.inspection }} > tmp.json
+          cat tmp.json
+          echo "$(./read-img-json.py tmp.json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+      - name: Read required R Packages 
+        run: |
           source R_PACKAGES
           echo "PACKAGES=$PACKAGES" >> $GITHUB_ENV
       - name: Login to GitHub Container Registry
