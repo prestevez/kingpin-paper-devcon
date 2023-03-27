@@ -7,7 +7,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Get latest R version of parent image
-        uses: docker://dockerquay.io/skopeo/stable
+        uses: docker://quay.io/skopeo/stable
         with:
           args: echo 'json="$(inspect docker://ghcr.io/rocker-org/devcontainer/geospatial)"' >> $GITHUB_ENV
       - run: | 
