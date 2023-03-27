@@ -1,5 +1,5 @@
 {
-    "image": "ghcr.io/rocker-org/devcontainer/geospatial",
+    "image": "ghcr.io/rocker-org/devcontainer/geospatial:latest",
     "features":{
         "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
 			    "packages": "${localEnv:PACKAGES}"
