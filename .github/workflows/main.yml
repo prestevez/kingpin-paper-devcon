@@ -11,12 +11,11 @@ jobs:
         uses: prestevez/skopeo-inspect@v1
         with: 
           target_image: docker://rocker/geospatial:latest
-      - name: Test skopeo-inspect action
-        run: echo ${{ steps.inspect-image.outputs.inspection }}
       - name: Parse image inspection
         run: | 
-          echo ${{ steps.inspect-image.outputs.inspection }} > tmp.json
+          echo "${{ steps.inspect-image.outputs.inspection }}" > tmp.json
           cat tmp.json
+          ./read-img-json.py tmp.json.${GITHUB_SHA:0:7}
           echo "$(./read-img-json.py tmp.json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - name: Read required R Packages 
         run: |
