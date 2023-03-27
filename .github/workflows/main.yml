@@ -10,10 +10,8 @@ jobs:
         uses: docker://dockerquay.io/skopeo/stable
         with:
           args: echo 'json="$(inspect docker://ghcr.io/rocker-org/devcontainer/geospatial)"' >> $GITHUB_ENV
-      - name: Get R Version using python script
       - run: | 
           echo "$(./read-img-json.py $json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
-      - name: Get custom R packages
       - run: |
           source R_PACKAGES
           echo "PACKAGES=$PACKAGES" >> $GITHUB_ENV
