@@ -6,14 +6,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Get latest R version of parent image
-        uses: docker://quay.io/skopeo/stable
-        with:
-          entrypoint: bash
-          args: skopeo inspect --override-arch amd64 docker://rocker/geospatial:latest > tmp.json
-      - run: |
-          echo tmp.json
-          echo "json=$(cat tmp.json)" >> $GITHUB_ENV
+      - name: Inspect parent image
+        id: inspection
+        uses: prestevez/skopeo-inspect@beta
+        with: 
+          target-image: rocker/geospatial:latest
+      - name: Test skopeo inspect action
+        run: echo ${{ steps.inspection.outputs.inspection }}
       - run: | 
           echo "$(./read-img-json.py $json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - run: |
