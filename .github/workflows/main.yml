@@ -13,9 +13,10 @@ jobs:
           target_image: docker://rocker/geospatial:latest
       - name: Parse image inspection
         run: | 
-          printif ${{ steps.inspect-image.outputs.inspection }} > tmp.json
+          echo ${{ steps.inspect-image.outputs.inspection }} > tmp.json
           echo "now cat tmp.json"
           cat tmp.json
+          ls -lah
           ./read-img-json.py tmp.json.${GITHUB_SHA:0:7}
           echo "$(./read-img-json.py tmp.json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - name: Read required R Packages 
