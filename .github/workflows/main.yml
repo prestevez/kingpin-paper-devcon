@@ -14,10 +14,8 @@ jobs:
       - name: Parse image inspection
         run: | 
           echo ${{ steps.inspect-image.outputs.inspection }} > tmp.json
-          echo "now cat tmp.json"
-          cat tmp.json
-          ls -lah
-          ./read-img-json.py tmp.json.${GITHUB_SHA:0:7}
+          which python3
+          ./read-img-json.py tmp.json
           echo "$(./read-img-json.py tmp.json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - name: Read required R Packages 
         run: |
