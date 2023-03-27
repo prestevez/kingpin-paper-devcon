@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3doo
+        uses: actions/checkout@v3
       - name: Get latest R version of parent image
         uses: docker://dockerquay.io/skopeo/stable
         with:
