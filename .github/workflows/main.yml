@@ -1,5 +1,9 @@
 name: Pre-build and push devcontainer image to registry
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+
 jobs: 
   pre-build-dev-container:
     runs-on: ubuntu-latest
@@ -31,4 +35,3 @@ jobs:
           imageName: ghcr.io/prestevez/kingpin-paper-devcon
           imageTag: latest,${{ env.R_VERSION }}
           skipContainerUserIdUpdate: true
-          push: never
