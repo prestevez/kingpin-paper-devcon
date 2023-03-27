@@ -4,12 +4,17 @@ jobs:
   pre-build-dev-container:
     runs-on: ubuntu-latest
     steps:
-      - name: Set version var
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3doo
+      - name: Get latest R version of parent image
+        id: get_json
+        uses: docker://dockerquay.io/skopeo/stable
+        with:
+          args: echo 'json="$(inspect docker://ghcr.io/rocker-org/devcontainer/geospatial)"' >> $GITHUB_ENV
+      - name: Get R Version using python script
       - run: | 
-          source VERSION
-          VER=$VMAJOR.$VMINOR.$VPATCH.${GITHUB_SHA:0:7}
-          echo "VERSION=$VER" >> $GITHUB_ENV
+          echo "$(./read-img-json.py $json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+      - name: Get custom R packages
       - run: |
           source R_PACKAGES
           echo "PACKAGES=$PACKAGES" >> $GITHUB_ENV
@@ -23,5 +28,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with: 
           imageName: ghcr.io/prestevez/kingpin-paper-devcon
-          imageTag: latest,${{ env.VERSION }}
+          imageTag: latest,${{ env.R_VERSION }}
           skipContainerUserIdUpdate: true
+          push: never

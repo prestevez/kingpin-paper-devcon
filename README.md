@@ -2,7 +2,7 @@
 
 - [ ] use variable names to choose image
 - [ ] use variable names to name new image
-- [ ] Version numbering so that it follows rockers?
+- [ ] Version numbering so that it follows rockers? <- trying this
 - [x] Deliver MVP
 - [ ] Build multi platform images <- Not yet available in manifest
 - [x] Push to ghcr.io
