@@ -9,7 +9,10 @@ jobs:
       - name: Get latest R version of parent image
         uses: docker://quay.io/skopeo/stable
         with:
-          args: echo 'json="$(inspect docker://ghcr.io/rocker-org/devcontainer/geospatial)"' >> $GITHUB_ENV
+          args: inspect docker://ghcr.io/rocker-org/devcontainer/geospatial >> tmp.json
+      - run: |
+          echo tmp.json
+          echo "json=$(cat tmp.json)" >> $GITHUB_ENV
       - run: | 
           echo "$(./read-img-json.py $json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - run: |
