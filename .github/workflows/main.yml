@@ -18,7 +18,10 @@ jobs:
       - name: Parse image inspection
         run: | 
           echo ${{ steps.inspect-image.outputs.inspection }} > tmp.json
-          echo "$(./read-img-json.py tmp.json).${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+          eval "$(./read-img-json.py tmp.json)"
+          echo $R_VERSION
+          echo "$ver" >> $GITHUB_ENV
+          echo "$ver.${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - name: Read required R Packages 
         run: |
           source R_PACKAGES
@@ -35,3 +38,4 @@ jobs:
           imageName: ghcr.io/prestevez/kingpin-paper-devcon
           imageTag: latest,${{ env.R_VERSION }}
           skipContainerUserIdUpdate: true
+          push: never
