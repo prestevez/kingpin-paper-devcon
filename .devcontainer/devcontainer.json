@@ -3,7 +3,8 @@
     "features":{
         "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
 			    "packages": "${localEnv:PACKAGES}"
-		    }
+		    },
+        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {}
     },
     "customizations": {
         "vscode": {
