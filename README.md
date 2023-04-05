@@ -9,3 +9,4 @@
 - [x] Test differences between created images and "features image"
 - [ ] ~~Use cache~~
 - [ ] Set up workflow as an action to pre-build custom rocker images
+- [x] Added forked version of PanelMatch to fix a bug
