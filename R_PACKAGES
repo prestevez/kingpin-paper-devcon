@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # R Packages to install
-PACKAGES="ggthemes,car,Cairo,texreg,PanelMatch,furrr"
+PACKAGES="ggthemes,car,Cairo,texreg,furrr,github::prestevez/PanelMatch@mahalanobis-match-size-fix"
