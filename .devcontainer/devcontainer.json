@@ -1,5 +1,7 @@
 {
-    "image": "ghcr.io/rocker-org/binder:4",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
     "features":{
         "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
 			    "packages": "${localEnv:PACKAGES}"
