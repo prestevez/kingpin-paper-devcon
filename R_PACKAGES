@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # R Packages to install
-PACKAGES="ggthemes,car,Cairo,texreg,furrr,rsample,tigris,github::prestevez/PanelMatch@se_comparison"
+PACKAGES="ggthemes,car,Cairo,texreg,furrr,rsample,tigris,rmapshaper,patchwork,sfdep,github::prestevez/PanelMatch@exact_match_attr"
